@@ -1,0 +1,10 @@
+Drop "Zoe & Eva's Rainbow Dance" here as:
+
+    zoe-and-evas-rainbow-dance.mp3
+
+That filename matches the "file" entry in music/playlist.json, so the
+player will pick it up automatically — no code changes needed.
+
+You can delete this text file once the real mp3 is in place (it won't
+break anything if you leave it, the site only looks for files listed
+in playlist.json).
