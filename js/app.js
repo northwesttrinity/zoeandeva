@@ -211,7 +211,17 @@ loadPlaylist();
 // Chromecast (Google Cast Web Sender SDK)
 // ===========================================================
 window['__onGCastApiAvailable'] = function (isAvailable) {
-  if (isAvailable) initializeCastApi();
+  if (!isAvailable) return;
+  let attempts = 0;
+  (function waitForFramework(){
+    if (window.cast && cast.framework){
+      initializeCastApi();
+    } else if (attempts++ < 20){
+      setTimeout(waitForFramework, 100);
+    } else {
+      console.error('cast.framework never attached after __onGCastApiAvailable fired');
+    }
+  })();
 };
 
 function initializeCastApi(){
