@@ -10,5 +10,17 @@
     "artist": "Zoe & Eva",
     "file": "music/zoe-and-evas-koala-dance.mp3",
     "emoji": "🐨"
+  },
+  {
+    "title": "Percy Possum",
+    "artist": "Zoe & Eva",
+    "file": "music/percy-possum.mp3",
+    "emoji": "🐾"
+  },
+  {
+    "title": "Tickle Monster",
+    "artist": "Zoe & Eva",
+    "file": "music/tickle-monster.mp3",
+    "emoji": "👾"
   }
 ]
