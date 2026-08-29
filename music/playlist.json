@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Rainbow Dance",
+    "artist": "Zoe & Eva",
+    "file": "music/zoe-and-evas-rainbow-dance.mp3",
+    "emoji": "🌈"
+  },
+  {
+    "title": "Koala Dance",
+    "artist": "Zoe & Eva",
+    "file": "music/zoe-and-evas-koala-dance.mp3",
+    "emoji": "🐨"
+  },
+  {
+    "title": "Percy Possum",
+    "artist": "Zoe & Eva",
+    "file": "music/percy-possum.mp3",
+    "emoji": "🐾"
+  },
+  {
+    "title": "Tickle Monster",
+    "artist": "Zoe & Eva",
+    "file": "music/tickle-monster.mp3",
+    "emoji": "👾"
+  },
+  {
+    "title": "Mermaids",
+    "artist": "Zoe & Eva",
+    "file": "music/mermaids.mp3",
+    "emoji": "🧜"
+  }
+]
