@@ -27,6 +27,7 @@ let currentIndex = 0;
 let isCasting = false;
 let remotePlayer = null;
 let remotePlayerController = null;
+let castAdvancePending = false;
 
 // ---- Build the rainbow arc ----
 const ARC_CX = 200, ARC_CY = 185;
@@ -166,6 +167,7 @@ function loadTrack(index, autoplay){
   castStatus.textContent = isCasting ? castStatus.textContent : '';
 
   if (isCasting){
+    castAdvancePending = false;
     castCurrentTrack(autoplay);
   } else {
     audio.src = resolvedTrackUrl(track);
@@ -276,7 +278,25 @@ function onRemoteProgress(){
 
 function onRemoteStateChanged(){
   if (!isCasting || !remotePlayer) return;
-  setPlayingUI(remotePlayer.playerState === chrome.cast.media.PlayerState.PLAYING);
+  const state = remotePlayer.playerState;
+  setPlayingUI(state === chrome.cast.media.PlayerState.PLAYING);
+
+  // The cast receiver goes IDLE when a track finishes, is cancelled, or errors.
+  // We only want to auto-advance on a genuine "played to the end" (FINISHED).
+  if (state !== chrome.cast.media.PlayerState.IDLE){
+    castAdvancePending = false;
+    return;
+  }
+  if (castAdvancePending) return; // already handled this idle state, avoid double-advance
+
+  const session = cast.framework.CastContext.getInstance().getCurrentSession();
+  const mediaSession = session && session.getMediaSession && session.getMediaSession();
+  const idleReason = mediaSession && mediaSession.idleReason;
+
+  if (idleReason === chrome.cast.media.IdleReason.FINISHED){
+    castAdvancePending = true;
+    loadTrack(currentIndex + 1, true);
+  }
 }
 
 function castCurrentTrack(autoplay){
