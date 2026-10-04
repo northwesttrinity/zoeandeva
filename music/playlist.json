@@ -64,5 +64,11 @@
     "artist": "Zoe & Eva",
     "file": "music/spy-cat.mp3",
     "emoji": "🕵️"
+  },
+  {
+    "title": "Happy Halloween",
+    "artist": "Zoe & Eva",
+    "file": "music/happy-halloween.mp3",
+    "emoji": "🎃"
   }
 ]
